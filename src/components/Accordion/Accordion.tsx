@@ -3,50 +3,30 @@ import React from "react";
 type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
+    callBack:( collapsed:boolean)=>void
 }
 
 export function Accordion(props: AccordionPropsType) {
-    return(
+    return (
         <div>
-            <AccordionTitle title={props.titleValue}/>
+            <AccordionTitle title={props.titleValue}
+                            callBack={props.callBack}
+                            collapsed={props.collapsed}/>
             {!props.collapsed && <AccordionBody/>}
         </div>
 
-        )
-
-
-    /*if (props.collapsed){
-        return (
-            <><AccordionTitle title={props.titleValue}/></>
-        ) } else {
-        return (
-            <>
-                <AccordionTitle title={props.titleValue}/>
-                <AccordionBody/>
-            </> )*/
-    }
-
-
-export function Accordion2(props: AccordionPropsType) {
-    if (props.collapsed){
-        return (
-            <><AccordionTitle title={props.titleValue}/></>
-        ) } else {
-        return (
-            <>
-                <AccordionTitle title={props.titleValue}/>
-                <AccordionBody/>
-            </> )
-    }
+    )
 }
 
 type AccordionTitleType = {
     title: string
+    collapsed:boolean
+    callBack:(collapsed:boolean)=>void
 }
 
 function AccordionTitle(props: AccordionTitleType) {
     return (
-        <h1>{props.title}</h1>
+               <h2 onClick={()=>{props.callBack(!props.collapsed)}}>{props.title}</h2>
     )
 }
 
