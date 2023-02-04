@@ -26,7 +26,7 @@ type AccordionTitleType = {
 
 function AccordionTitle(props: AccordionTitleType) {
     return (
-               <h2 onClick={()=>{props.callBack(!props.collapsed)}}>{props.title}</h2>
+               <h2 onClick={(e)=>{props.callBack(!props.collapsed)}}>{props.title}</h2>
     )
 }
 
